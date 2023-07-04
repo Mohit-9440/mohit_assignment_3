@@ -31,11 +31,11 @@ exports.getUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { name, email, age } = req.body;
+    const { name, email, phone, website } = req.body;
 
     const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { name, email, age },
+      {_id:userId},
+      { name, email, phone, website },
       { new: true }
     );
 
@@ -48,8 +48,7 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const { userId } = req.params;
-
-    await User.findByIdAndDelete(userId);
+    await User.findByIdAndDelete({_id:userId});
 
     res.sendStatus(204);
   } catch (error) {

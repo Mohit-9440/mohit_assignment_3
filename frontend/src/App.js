@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Cards from './Profile';
 import './App.css';
 
 export default function App(){ 
 
-  const [cardsData, setcardsData] = useState([])
+  const [cardsData, setCardsData] = useState([])
 
-  const getData = () => {fetch('https://jsonplaceholder.typicode.com/users')
-                    .then((res) => res.json())
-                    .then((data) => {setcardsData(data)})
-                    .catch((err)=> {
-                      console.log(err)
-                    })}
+  const getData = () => {
+    axios.get('http://localhost:3000/api/users/getalluser')
+      .then((response) => {
+        setCardsData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
-    getData()
-    console.log(cardsData)
-  }, [])
+    getData();
+  }, []);
 
   return (
   <div className='cards'>
     <div className='cards_wrapper'>
-      <Cards cardsData={cardsData} setcardsData={setcardsData} />
+      <Cards cardsData={cardsData} setcardsData={setCardsData} />
     </div>
   </div>
   )};
