@@ -10,9 +10,18 @@ exports.createUser = async (req, res) => {
     }
 };
 
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
+
 exports.getUser = async (req, res) => {
     try {
-      const user = await User.findById(req.params.userId);
+      const user = await User.findById({_id:req.params.userId});
       res.json(user);
     } catch (error) {
       res.status(500).json({ error: 'An error occurred' });
