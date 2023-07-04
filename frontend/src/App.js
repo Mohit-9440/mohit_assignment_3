@@ -6,7 +6,7 @@ export default function App(){
 
   const [cardsData, setcardsData] = useState([])
 
-  const getData = () => {fetch('http:/localhost:3000/users')
+  const getData = () => {fetch('http:/localhost:3000/api/users')
                     .then((res) => res.json())
                     .then((data) => {setcardsData(data)})
                     .catch((err)=> {
