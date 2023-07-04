@@ -20,6 +20,7 @@ app.use(cors(
 
 // Connect to MongoDB
 connectToDatabase();
+console.log(process.env.MONGODB_URI);
 
 // Routes
 app.use('/api/users', userRoutes);
