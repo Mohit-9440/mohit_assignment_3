@@ -19,7 +19,7 @@ export default function Cards({ cardsData, setcardsData }) {
   const Hero = ({ name }) => {
     return (
       <div className="card_head_image">
-        <img alt='' src={`https://avatars.dicebear.com/v2/avataaars/${name}.svg?options[mood][]=hap`} />
+        <img alt='' src={`https://avatars.dicebear.com/v2/avataaars/${name}.svg?options[mood][]=happy`} />
       </div>
     );
   };
