@@ -8,7 +8,7 @@ export default function App(){
   const [cardsData, setCardsData] = useState([])
 
   const getData = () => {
-    axios.get('http://localhost:3000/api/users/getalluser')
+    axios.get('https://mohit-assignment-3-api.vercel.app/api/users/getalluser')
       .then((response) => {
         setCardsData(response.data);
       })
